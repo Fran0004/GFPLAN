@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111321">
+<title>Una misión especial para ti 🦇🎀</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap');
+:root{--night:#101321;--night2:#1c2038;--pink:#ff91bd;--pink2:#ffd9e8;--yellow:#ffdf61;--ink:#25243a;--white:#fffafc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:var(--night);color:white;font-family:Nunito,system-ui,sans-serif;overflow-x:hidden}
+button{font:inherit}
+.scene{position:fixed;inset:0;z-index:-3;overflow:hidden;background:linear-gradient(#111629 0%,#24223d 58%,#4b3452 100%)}
+.stars,.stars:before,.stars:after{position:absolute;inset:0;content:"";background-image:radial-gradient(#fff 1px,transparent 1.5px);background-size:73px 73px;opacity:.35}
+.stars:before{background-position:23px 17px;background-size:113px 113px;opacity:.45}
+.moon{position:absolute;right:12%;top:10%;width:90px;height:90px;border-radius:50%;background:#fff0c5;box-shadow:0 0 55px #ffe8ae88}
+.skyline{position:absolute;bottom:0;left:0;width:100%;height:33%;background:linear-gradient(90deg,#101321,#1a1b31);clip-path:polygon(0 35%,5% 35%,5% 15%,12% 15%,12% 48%,18% 48%,18% 5%,25% 5%,25% 30%,31% 30%,31% 18%,38% 18%,38% 43%,45% 43%,45% 0,53% 0,53% 32%,59% 32%,59% 12%,67% 12%,67% 45%,74% 45%,74% 20%,82% 20%,82% 39%,89% 39%,89% 10%,95% 10%,95% 35%,100% 35%,100% 100%,0 100%)}
+.skyline:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 35px,#ffd96b55 36px 40px,transparent 41px 65px);opacity:.45}
+.bats{position:absolute;top:17%;left:-10%;font-size:25px;opacity:.25;animation:fly 24s linear infinite}
+@keyframes fly{to{transform:translateX(120vw) translateY(-35px)}}
+.wrap{width:min(920px,100%);margin:auto;padding:26px 20px 65px;text-align:center}
+.topline{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:4px 0 22px}
+.pill{padding:8px 15px;border-radius:99px;font-size:.78rem;font-weight:900;letter-spacing:1px}
+.pill.bat{background:var(--yellow);color:#25243a;box-shadow:0 4px 0 #ad8d2e}
+.pill.kitty{background:var(--pink);color:white;box-shadow:0 4px 0 #bd5f8a}
+h1{font-size:clamp(2.1rem,7vw,4.6rem);line-height:1.06;margin:15px 0}
+h1 span{color:var(--pink)}
+.intro{max-width:610px;margin:0 auto;color:#e8e5f2;font-size:clamp(1rem,2.7vw,1.2rem);line-height:1.8}
+.signal{width:clamp(120px,25vw,190px);aspect-ratio:1;margin:28px auto 20px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#ffeaa7 0 26%,#ffeaa733 27% 48%,#ffeaa711 49% 68%,transparent 69%);filter:drop-shadow(0 0 18px #ffe7a755);animation:pulse 3s ease-in-out infinite}
+.signal span{font-size:clamp(4rem,13vw,7rem);filter:drop-shadow(0 5px 3px #111)}
+@keyframes pulse{50%{transform:scale(1.06);filter:drop-shadow(0 0 30px #ffe7a799)}}
+.envelope-area{margin:30px auto 15px}
+.envelope{position:relative;width:min(310px,80vw);height:190px;margin:0 auto;border:0;background:transparent;cursor:pointer;perspective:900px;filter:drop-shadow(0 15px 20px #0007);transition:transform .25s}
+.envelope:hover{transform:translateY(-5px)}
+.env-body{position:absolute;inset:25px 0 0;background:linear-gradient(135deg,#ffb3d0,#f47eae);border-radius:12px;overflow:hidden}
+.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.env-body:before{left:0;border-width:0 155px 112px 0;border-color:transparent #f18ab5 transparent transparent}
+.env-body:after{right:0;border-width:112px 155px 0 0;border-color:#ffd0e2 transparent transparent transparent}
+.flap{position:absolute;z-index:3;top:25px;left:0;width:0;height:0;border-left:155px solid transparent;border-right:155px solid transparent;border-top:112px solid #ffcee0;transform-origin:top;transition:transform .8s;filter:drop-shadow(0 3px 2px #d66f9c55)}
+.seal{position:absolute;z-index:4;left:50%;top:100px;transform:translateX(-50%);width:40px;height:40px;border-radius:50%;background:var(--yellow);color:#29243a;display:grid;place-items:center;font-size:1.5rem;border:3px solid #fff5}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0;transition:.2s}
+.envelope .hint{position:absolute;bottom:-30px;left:0;width:100%;font-size:.9rem;color:#f8dce9;font-weight:800}
+.section{margin:55px auto 0}
+.paper{position:relative;max-width:690px;margin:0 auto;padding:clamp(25px,6vw,48px);border-radius:22px;background:var(--white);color:var(--ink);box-shadow:0 18px 50px #0005;border:5px solid var(--pink);text-align:left}
+.paper:before{content:"♥";position:absolute;top:-24px;left:50%;transform:translateX(-50%);background:var(--pink);color:white;border-radius:50%;width:48px;height:48px;display:grid;place-items:center;font-size:1.4rem;border:4px solid var(--white)}
+.script{font-family:Pacifico,cursive;color:#e36e9e;font-size:clamp(1.5rem,4vw,2rem);text-align:center;margin:4px 0 18px}
+.letter{font-size:1.04rem;line-height:1.95;color:#5b566b;white-space:pre-line;min-height:175px}
+.signature{font-family:Pacifico,cursive;color:#e36e9e;text-align:right;font-size:1.35rem;margin-top:20px}
+.cast{display:flex;justify-content:center;align-items:center;gap:clamp(22px,8vw,85px);margin:38px auto 0}
+.toy{width:clamp(105px,24vw,155px);height:180px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:bob 3s ease-in-out infinite}
+.toy:nth-child(2){animation-delay:1s}
+@keyframes bob{50%{transform:translateY(-10px) rotate(2deg)}}
+.toy .head{width:94px;height:85px;border-radius:27px 27px 22px 22px;position:relative;display:grid;place-items:center;border:4px solid #171725;box-shadow:inset 0 -7px #0001}
+.bat-head{background:#26283a}
+.bat-head:before,.bat-head:after{content:"";position:absolute;top:-20px;width:30px;height:38px;background:#26283a;border:4px solid #171725;z-index:-1}
+.bat-head:before{left:4px;transform:skew(-15deg) rotate(-8deg)}
+.bat-head:after{right:4px;transform:skew(15deg) rotate(8deg)}
+.bat-eyes{display:flex;gap:16px;margin-top:12px}
+.bat-eyes i{width:17px;height:9px;background:white;display:block;border-radius:100% 100% 20% 20%;transform:rotate(-10deg)}
+.bat-eyes i:last-child{transform:rotate(10deg)}
+.kitty-head{background:#fff;border-radius:42% 42% 38% 38%!important}
+.kitty-head:before,.kitty-head:after{content:"";position:absolute;top:-13px;width:32px;height:34px;background:white;border:4px solid #171725;z-index:-1}
+.kitty-head:before{left:0;clip-path:polygon(0 0,100% 35%,70% 100%,0 100%)}
+.kitty-head:after{right:0;clip-path:polygon(100% 0,100% 100%,30% 100%,0 35%)}
+.bow{position:absolute;top:-17px;right:-17px;color:#ef5c9a;font-size:2.2rem;z-index:2;text-shadow:1px 2px #8d315b}
+.whiskers{position:absolute;top:43px;left:12px;right:12px;display:flex;justify-content:space-between;color:#343244;font-size:1.25rem;letter-spacing:-3px}
+.nose{position:absolute;top:48px;width:8px;height:6px;border-radius:50%;background:#f3b62d}
+.toy .body{width:75px;height:55px;border:4px solid #171725;border-radius:18px;margin-top:-3px;background:#ffdf61}
+.toy:nth-child(2) .body{background:#ff9fc5}
+.toy-label{font-size:.8rem;font-weight:900;letter-spacing:1px;margin-top:5px;color:#f6e9f4}
+.question h2{font-size:clamp(2rem,6vw,3.5rem);color:var(--yellow);text-shadow:3px 4px #000;margin:0 0 12px}
+.question p{color:#e9e4f1;font-size:1.05rem}
+.buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:28px 0}
+.btn{border:0;border-radius:99px;padding:16px 28px;font-weight:900;font-size:1.05rem;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-4px) scale(1.04)}
+.yes{background:var(--pink);color:white;box-shadow:0 6px 0 #b64f81}
+.wait{background:var(--yellow);color:#28243b;box-shadow:0 6px 0 #ad8d2e}
+#answer{display:none;max-width:620px;margin:22px auto 0;padding:25px;border-radius:20px;background:#ffe1ed;color:#36253b;font-weight:800;line-height:1.7;animation:pop .5s ease}
+@keyframes pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+footer{margin:55px 0 0;color:#c9c2d9;font-size:.9rem}
+.heart{position:fixed;bottom:-40px;z-index:10;pointer-events:none;animation:rise 4.5s linear forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+.hidden{display:none!important}
+.img{width:140%;height:140%;object-fit:cover;border-radius:12px;box-shadow:0 6px 15px #0005}
+.imgbat{width:100%;height:100%;}
+@media(max-width:520px){.wrap{padding:22px 15px 45px}.moon{width:60px;height:60px}.paper{border-width:3px}.letter{font-size:.98rem}.toy{height:155px}.buttons{flex-direction:column;align-items:center}.btn{width:min(290px,100%)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="scene" aria-hidden="true">
+  <div class="stars"></div><div class="moon"></div><div class="bats">🦇</div><div class="skyline"></div>
+</div>
+
+<main class="wrap">
+
+  <div class="signal" aria-label="Señal de murciélago"><span><img class="imgbat" src="./img/bat.png" alt=""></span></div>
+  <h1>Enhorabuena<br><span>has descubierto el secreto</span></h1>
+  <p class="intro"></p>Es hora de decirte algo importante, te adelanto que aqui dentro no caben unos polvos de huda beauty, ni un batmovil y por desgracia tampoco hay un rico ramen, pero puede que te guste lo que encuntres
+
+  <section class="envelope-area" aria-label="Carta sorpresa">
+    <button class="envelope" id="envelope" aria-label="Abrir la carta">
+      <span class="env-body"></span><span class="flap"></span><span class="seal"></span>
+      <span class="hint">Pulsa para abrir tu carta 💌</span>
+    </button>
+  </section>
+
+  <section class="section hidden" id="letterSection">
+    <article class="paper">
+      <div class="script">Para Sofía Albelda Lasa</div>
+      <div class="letter" id="letterText"></div>
+      <div class="signature">Por eso con mucho cariño te pregunto♥</div>
+    </article>
+    <div class="cast" aria-label="Dos personajes de nuestra aventura">
+      <div class="toy">
+        <img class="img" src="./img/us.jpg" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section class="section question hidden" id="questionSection">
+    <h2>¿Quieres ser mi novia?</h2>
+    <div class="buttons">
+      <button class="btn yes" id="yesBtn">¡SÍ, QUIERO! 💗</button>
+      <button class="btn wait" id="waitBtn">Necesito pensarlo 🥺</button>
+    </div>
+    <div id="answer" role="status" aria-live="polite"></div>
+  </section>
+
+  <footer style="opacity: 0.2;">TIENE COPY LA PAGINA ASI Q NO ROBARLA🦇🎀</footer>
+</main>
+
+<script>
+const envelope = document.getElementById('envelope');
+const letterSection = document.getElementById('letterSection');
+const questionSection = document.getElementById('questionSection');
+const letterText = document.getElementById('letterText');
+const answer = document.getElementById('answer');
+
+const message = `Ya llevamos un tiempo compartiendo momentos durante estos meses. Quién lo diría, ¿no? Que seguiríamos quedando después de aquella época gélida en la que ni siquiera te contestaba los mensajes. Ya sabes que Batman no siempre puede estar pendiente del móvil. XD
+
+Pero, dejando las bromas a un lado, pronto supe que no quería dejarte escapar de mi vida así como así. Decidí apartar las tonterías y seguir hablando contigo hasta que llegó el día en que quedamos para ver La Odisea. Y, desde aquel día, lo cierto es que no he querido dejar de verte ni de seguir compartiendo momentos contigo.
+
+No voy a negar que a veces me invaden el miedo y la incertidumbre. Me pregunto si sabré estar a la altura, si seré capaz de ser una buena pareja para ti y de darte todo lo que mereces. Pero, a pesar de esas dudas, quiero aventurarme. Quiero darme la oportunidad de demostrarte, y también de demostrarme a mí mismo, que puedo ser esa buena pareja.
+
+Porque, si algo tengo claro, es que quiero seguir conociéndote, creando recuerdos y compartiendo muchísimos más momentos a tu lado.`
+
+let opened = false;
+envelope.addEventListener('click', () => {
+  if (opened) return;
+  opened = true;
+  envelope.classList.add('open');
+  envelope.querySelector('.hint').textContent = 'La sorpresa es para ti 💗';
+  setTimeout(() => {
+    letterSection.classList.remove('hidden');
+    questionSection.classList.remove('hidden');
+    typeText(message);
+    setTimeout(() => questionSection.scrollIntoView({behavior:'smooth',block:'center'}), 900);
+  }, 650);
+});
+
+function typeText(text) {
+  let i = 0;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) { letterText.textContent = text; return; }
+  const timer = setInterval(() => {
+    letterText.textContent += text.charAt(i);
+    i++;
+    if (i >= text.length) clearInterval(timer);
+  }, 24);
+}
+
+document.getElementById('yesBtn').addEventListener('click', () => {
+  answer.style.display = 'block';
+  answer.innerHTML = 'Lets go!! <br> Batman y su NOVIA Hello Kitty van a poder salir a luchar contra el crimen juntos <3';
+  document.querySelector('.question h2').textContent = '¡MISIÓN: COMENZAR NUESTRA AVENTURA!';
+  burstHearts(65);
+  answer.scrollIntoView({behavior:'smooth',block:'center'});
+});
+
+document.getElementById('waitBtn').addEventListener('click', () => {
+  answer.style.display = 'block';
+  answer.textContent = 'Estas segura?? No pasa nada, pero que soy un partidazo, esta oferta solo es para el black friday ajajajjaja.';
+});
+
+function burstHearts(amount) {
+  const symbols = ['❤️','💗','💕','🎀','🦇','✨'];
+  for (let i=0;i<amount;i++) {
+    setTimeout(() => {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      heart.style.left = Math.random()*100+'vw';
+      heart.style.fontSize = (18+Math.random()*22)+'px';
+      heart.style.animationDuration = (3+Math.random()*3)+'s';
+      document.body.appendChild(heart);
+      setTimeout(()=>heart.remove(),6500);
+    },i*45);
+  }
+}
+</script>
+</body>
+</html>
